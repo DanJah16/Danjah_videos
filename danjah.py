@@ -66,6 +66,6 @@ def reload_video(video_url):
 
 if __name__ == "__main__":
     print(f"{Fore.MAGENTA}Bienvenido al recargador de videos.{Style.RESET_ALL}")
-    video_url = input(f"{Fore.YELLOW}Ingresa la URL del video que deseas recargar: {Style.RESET_ALL}")
+    video_url = input(f"{Fore.YELLOW}Ingresa la URL del video que deseas descargar: {Style.RESET_ALL}")
 
     reload_video(video_url)
