@@ -46,7 +46,7 @@ def reload_video(video_url):
             stream = select_resolution(video)
             print(f"{Fore.YELLOW}Descargando video (MP4) en {stream.resolution}: {video.title}{Style.RESET_ALL}")
             file_name = "video_" + video.title + ".mp4"
-            destination = os.path.join(os.getcwd(), file_name)
+            destination = os.path.join("/storage/emulated/0/", file_name)  # Ruta de la memoria interna de Android
             dl = SmartDL(stream.url, destination, progress_bar=False)
             dl.start()
             print(f"{Fore.GREEN}Descarga de video (MP4) completada con éxito.{Style.RESET_ALL}")
@@ -54,7 +54,7 @@ def reload_video(video_url):
             stream = select_audio_quality(video)
             print(f"{Fore.YELLOW}Descargando audio (MP3) en {stream.abr} kbps: {video.title}{Style.RESET_ALL}")
             file_name = "audio_" + video.title + ".mp3"
-            destination = os.path.join(os.getcwd(), file_name)
+            destination = os.path.join("/storage/emulated/0/", file_name)  # Ruta de la memoria interna de Android
             dl = SmartDL(stream.url, destination, progress_bar=False)
             dl.start()
             print(f"{Fore.GREEN}Descarga de audio (MP3) completada con éxito.{Style.RESET_ALL}")
@@ -65,7 +65,8 @@ def reload_video(video_url):
         print(f"{Fore.RED}Error durante la recarga: {e}{Style.RESET_ALL}")
 
 if __name__ == "__main__":
-    print(f"{Fore.MAGENTA}Bienvenido al recargador de videos.{Style.RESET_ALL}")
+    print(f"{Fore.MAGENTA}Bienvenido a DanJah videos.{Style.RESET_ALL}")
     video_url = input(f"{Fore.YELLOW}Ingresa la URL del video que deseas descargar: {Style.RESET_ALL}")
 
     reload_video(video_url)
+    
