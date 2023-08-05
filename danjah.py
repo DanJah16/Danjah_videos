@@ -31,7 +31,7 @@ def reload_video(video_url):
         # Descargar el video
         video = YouTube(video_url)
         print(f"{Fore.GREEN}{'-' * 30}")
-        print(f"  {Fore.MAGENTA}BIENVENIDO AL RECARGADOR DE VIDEOS.")
+        print(f"  VIDEO ENCONTRADO: {video.title}")
         print(f"{'-' * 30}{Style.RESET_ALL}")
 
         # Mostrar opciones de descarga
@@ -56,9 +56,9 @@ def reload_video(video_url):
             print(f"{Fore.GREEN}  Descarga de video (MP4) completada con éxito.{Style.RESET_ALL}")
         elif option == "2":
             stream = select_audio_quality(video)
-            print(f"{Fore.YELLOW}{'-' * 20}")
+            print(f"{Fore.YELLOW}{'-' * 30}")
             print(f"  {Fore.CYAN}DESCARGANDO AUDIO (MP3) EN {stream.abr} kbps: {video.title}")
-            print(f"{'-' * 20}{Style.RESET_ALL}")
+            print(f"{'-' * 30}{Style.RESET_ALL}")
             file_name = "danjah_" + video.title + ".mp3"
             destination = os.path.join("/sdcard/", file_name)  # Ruta en la tarjeta SD
             dl = SmartDL(stream.url, destination)
@@ -79,10 +79,10 @@ def reload_video(video_url):
 
 
 if __name__ == "__main__":
-    print(f"{Fore.MAGENTA}{'-' * 30}")
+    print(f"{Fore.MAGENTA}{'-' * 40}")
     print("  BIENVENIDO A DANJAH VIDEOS.")
-    print(f"{'-' * 30}{Style.RESET_ALL}")
-    video_url = input(f"{Fore.YELLOW}Ingresa la URL del video que deseas recargar: {Style.RESET_ALL}")
+    print(f"{'-' * 40}{Style.RESET_ALL}")
+    video_url = input(f"{Fore.YELLOW}Ingresa la URL del video que deseas descargar: {Style.RESET_ALL}")
 
     reload_video(video_url)
         
