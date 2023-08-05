@@ -49,7 +49,7 @@ def reload_video(video_url):
             print(f"{Fore.YELLOW}{'-' * 20}")
             print(f"  {Fore.CYAN}DESCARGANDO VIDEO (MP4) EN {stream.resolution}: {video.title}")
             print(f"{'-' * 20}{Style.RESET_ALL}")
-            file_name = "video_" + video.title + ".mp4"
+            file_name = "danjah_" + video.title + ".mp4"
             destination = os.path.join("/sdcard/", file_name)  # Ruta en la tarjeta SD
             dl = SmartDL(stream.url, destination)
             dl.start()
@@ -59,7 +59,7 @@ def reload_video(video_url):
             print(f"{Fore.YELLOW}{'-' * 20}")
             print(f"  {Fore.CYAN}DESCARGANDO AUDIO (MP3) EN {stream.abr} kbps: {video.title}")
             print(f"{'-' * 20}{Style.RESET_ALL}")
-            file_name = "audio_" + video.title + ".mp3"
+            file_name = "danjah_" + video.title + ".mp3"
             destination = os.path.join("/sdcard/", file_name)  # Ruta en la tarjeta SD
             dl = SmartDL(stream.url, destination)
             dl.start()
