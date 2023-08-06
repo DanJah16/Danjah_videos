@@ -9,29 +9,27 @@ init(autoreset=True)
 def select_resolution(video):
     available_resolutions = video.streams.filter(file_extension='mp4').order_by('resolution').desc()
     print(f"{Fore.YELLOW}{'-' * 20}")
-    print("  Resoluciones disponibles para el video:")
+    print(f"  {Fore.CYAN}Resoluciones disponibles para el video:")
     for i, stream in enumerate(available_resolutions, start=1):
-        print(f"  {i}. {stream.resolution}")
+        print(f"  {i}. {Fore.GREEN}{stream.resolution}{Style.RESET_ALL}")
     option = int(input("  Selecciona el número de la resolución que deseas descargar: "))
     return available_resolutions[option - 1]
 
 def select_audio_quality(video):
     available_audio = video.streams.filter(only_audio=True).order_by('abr').desc()
     print(f"{Fore.YELLOW}{'-' * 20}")
-    print("  Calidades disponibles para el audio:")
+    print(f"  {Fore.CYAN}Calidades disponibles para el audio:")
     for i, stream in enumerate(available_audio, start=1):
-        print(f"  {i}. {stream.abr} kbps")
+        print(f"  {i}. {Fore.GREEN}{stream.abr} kbps{Style.RESET_ALL}")
     option = int(input("  Selecciona el número de la calidad que deseas descargar: "))
     return available_audio[option - 1]
-
-# ...
 
 def reload_video(video_url):
     try:
         # Descargar el video
         video = YouTube(video_url)
         print(f"{Fore.GREEN}{'-' * 30}")
-        print(f"  VIDEO ENCONTRADO: {video.title}")
+        print(f"  {Fore.MAGENTA}VIDEO ENCOTRADO: {video.title}.")
         print(f"{'-' * 30}{Style.RESET_ALL}")
 
         # Mostrar opciones de descarga
@@ -41,7 +39,7 @@ def reload_video(video_url):
         print(f"   2. Solo Audio (MP3)")
         print(f"{'-' * 20}{Style.RESET_ALL}")
 
-        option = input("  Selecciona el número de la opción que deseas descargar: ")
+        option = input(f"  {Fore.YELLOW}Selecciona el número de la opción que deseas descargar: {Style.RESET_ALL}")
 
         # Recargar el video o solo el audio según la elección
         if option == "1":
@@ -56,9 +54,9 @@ def reload_video(video_url):
             print(f"{Fore.GREEN}  Descarga de video (MP4) completada con éxito.{Style.RESET_ALL}")
         elif option == "2":
             stream = select_audio_quality(video)
-            print(f"{Fore.YELLOW}{'-' * 30}")
+            print(f"{Fore.YELLOW}{'-' * 20}")
             print(f"  {Fore.CYAN}DESCARGANDO AUDIO (MP3) EN {stream.abr} kbps: {video.title}")
-            print(f"{'-' * 30}{Style.RESET_ALL}")
+            print(f"{'-' * 20}{Style.RESET_ALL}")
             file_name = "danjah_" + video.title + ".mp3"
             destination = os.path.join("/sdcard/", file_name)  # Ruta en la tarjeta SD
             dl = SmartDL(stream.url, destination)
@@ -71,12 +69,8 @@ def reload_video(video_url):
 
     except Exception as e:
         print(f"{Fore.RED}{'-' * 20}")
-        print(f"  ERROR DURANTE LA DESCARGA: {e}")
+        print(f"  ERROR DURANTE LA RECARGA: {e}")
         print(f"{'-' * 20}{Style.RESET_ALL}")
-
-# ...
-
-
 
 if __name__ == "__main__":
     print(f"{Fore.MAGENTA}{'-' * 40}")
